@@ -1,0 +1,40 @@
+mysql
+user: root
+pass: ecohj*-ju0)P
+new pass: h*bS!876GIk#
+
+create table singers (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO singers VALUES (1, 'Kanye', 'West');
+INSERT INTO singers VALUES (2, 'Harry', 'Nilsson');
+INSERT INTO singers VALUES (3, 'Carly', 'Simon');
+INSERT INTO singers VALUES (4, 'Cyndi', 'Lauper');
+INSERT INTO singers VALUES (5, 'Lil', 'Wayne');
+
+
+create table songs ( 
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	album VARCHAR(50) NOT NULL,
+	singers_id INT(11) NOT NULL,
+	PRIMARY KEY (id),
+	KEY FK_singers_id (singers_id),
+	CONSTRAINT FK_singers_id FOREIGN KEY (singers_id) REFERENCES singers (id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+INSERT INTO songs VALUES (1, 'You’re So Vain', 'No Secrets', 3);
+INSERT INTO songs VALUES (2, 'Stronger', 'Graduation', 1);
+INSERT INTO songs VALUES (3, 'A Milli', 'Tha Carter III', 5);
+INSERT INTO songs VALUES (4, 'Time After Time', 'She’s So Unusual', 4);
+INSERT INTO songs VALUES (5, 'Without You', 'AVICI', 2);
+
+
+mongodb
+db.songs.insertOne({id: '1',name: 'Stronger',album: 'Graduation'})
+db.songs.insertOne({id: '2',name: 'A Milli',album: 'Tha Carter III'})
+db.songs.insertOne({id: '3',name: 'Without You',album: 'AVICI'})
