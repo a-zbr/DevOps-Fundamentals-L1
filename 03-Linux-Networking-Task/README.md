@@ -39,12 +39,15 @@
 &emsp; 1.2 Server_1 configuration:
 
 * network configuration;
+
 ![net_00.1.PNG](./img/1-4/net_00.1.PNG)
 
 * IP address configuration in /etc/netplan/00-installer-config.yaml;
+
 ![net_02.PNG](./img/1-4/net_02.PNG)
 
 * system hostname configurations.
+
 ![net_05.PNG](./img/1-4/net_05.PNG)
 
 ***
@@ -52,12 +55,15 @@
 &emsp; 1.3 Client_1 configuration:
 
 * network configuration;
+
 ![net_00.2.PNG](./img/1-4/net_00.2.PNG)
 
 * IP address configuration in /etc/netplan/00-installer-config.yaml;
+
 ![net_12.PNG](./img/1-4/net_12.PNG)
 
 * system hostname configurations.
+
 ![net_11.PNG](./img/1-4/net_11.PNG)
 
 ***
@@ -65,55 +71,68 @@
 &emsp; 1.4 Client_2 configuration:
 
 * network configuration;
+
 ![net_00.3.PNG](./img/1-4/net_00.3.PNG)
 
 * IP address configuration;
+
 ![net_00.PNG](./img/1-4/net_00.PNG)
 
 * system hostname configurations.
+
 ![net_01.PNG](./img/1-4/net_01.PNG)
 
 ***
 
 &emsp; 1.5 A new configuration was accepted on the Server_1.
+
 ![net_03.PNG](./img/1-4/net_03.PNG)
 ***
 
 &emsp; 1.6 A new configuration was cheked on the Server_1.
+
 ![net_04.PNG](./img/1-4/net_04.PNG)
 ***
 
 ### 2. На Server_1 налаштувати DHCP сервіс, який буде конфігурувати адреси Int1 Client_1 та Client_2
 
 &emsp; 2.1 A DHCP server has been installed on Server_1.
+
 ![net_06.PNG](./img/1-4/net_06.PNG)
 ***
 
 &emsp; 2.2 Configuration of the dhcp.conf.
+
 ![net_07.PNG](./img/1-4/net_07.PNG)
 ***
 
 &emsp; 2.3 Settings have been changed for two interfaces.
+
 ![net_08.PNG](./img/1-4/net_08.PNG)
 ***
 
 &emsp; 2.4 DHCP server has been started.
+
 ![net_09.PNG](./img/1-4/net_09.PNG)
 ***
 
 &emsp; 2.5 Restart network manager on the Client_2. Make "ping" to Server_1.
+
 ![net_10.PNG](./img/1-4/net_10.PNG)
 ***
 
 &emsp; 2.6 Restart network manager on the Client_2. Make "ping" to Server_1.
+
 ![net_10.PNG](./img/1-4/net_10.PNG)
 ***
 
 &emsp; 2.7 Netplan apply on the Server_1. Make "ping" to Server_1.
+
 ![net_13.PNG](./img/1-4/net_13.PNG)
 ***
 
 &emsp; 2.8 Edit /etc/sysctl.conf file. Restart network manager on the Server_1.
+
 ![net_14.PNG](./img/1-4/net_14.PNG)
 ***
 
