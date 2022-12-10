@@ -265,6 +265,8 @@
 * 172.17.33.1
 * 172.17.43.1
 
+***
+
 &emsp; 7.2 The route rules have been added to the Server_1 in the iptables.
 
 ![net_31.PNG](./img/7/net_31.PNG)
