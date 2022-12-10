@@ -42,7 +42,6 @@
 ![net_00.1.PNG](./img/1-4/net_00.1.PNG)
 
 * IP address configuration in /etc/netplan/00-installer-config.yaml;
-
 ![net_02.PNG](./img/1-4/net_02.PNG)
 
 * system hostname configurations.
