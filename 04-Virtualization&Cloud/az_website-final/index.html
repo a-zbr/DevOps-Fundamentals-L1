@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display&family=Satisfy&display=swap"
+          rel="stylesheet">
+    <title>zbr-it</title>
+    <link rel="icon" href="media/img/counter-strike-logos-brands-and-logotypes-9.png" type="image/x-icon">
+</head>
+
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <a><img class="logo-icon" src="media/img/Epam_Systems_Logo.png"></a>
+            </div>
+            <nav>
+                <div class="nav">
+                    <a class="nav__link" href="#main">Main</a>
+                    <a class="nav__link" href="#about">About me</a>
+                    <a class="nav__link" href="#services">AWS Services</a>
+                    <a class="nav__link" href="#tutorials">Tutorials</a>
+                    <a class="burger-icon">Menu <i class="fas fa-bars"></i></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!--Main-->
+<main>
+
+    <!-- Intro -->
+    <section class="main" id="main">
+        <div class="intro">
+        <div class="container">
+            <div class="intro__subheading">EPAM University Programs</div>
+            <div class="intro__heading">Cloud&DevOps Fundamentals Autumn 2022</div>
+        </div>
+    </div>
+    </section>
+
+    <!--About-->
+    <section class="about_me" id="about">
+        <div class="container">
+            <div>
+                <h2 class="section__heading">About me</h2>
+            </div>
+            <div class="about">
+                <div>
+                    <img class="about_photo" src="media/img/me2.jpg" >
+                </div>
+                <div class="about_bio">
+                    <div class="about__bio__text">
+                        <p>Andrii Zbarazhskyi</p>
+                        <p>I am a student of the EPAM University.</p>
+                        <p>I enrolled in the DevOps course.</p>
+                        <p>I study subjects such as: Linux, Computer networks, Cloud technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <main>
+        <div class="slideshow-container" id="services">
+            <h2 style="text-align:center" class="section__heading">AWS Services</h2>
+            <div class="mySlides fade">
+                <img src="media/img/slide1.png"
+                style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="media/img/slide2.png"
+                style="width:100%">
+            </div>
+            <div class="mySlides fade">
+            <img src="media/img/slide3.png"
+                style="width:100%">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+        <br>
+        <div class="dots" style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </main>
+
+    <!--Tutorials-->
+    <section class="page-section" id="tutorials">
+        <div class="container">
+            <div>
+                <h2 class="section__heading">Tutorials</h2>
+                <h3 class="section__subheading">Full list of completed labs</h3>    
+            </div>
+            <div class="portfolio__row">
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial1.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://aws.amazon.com/ec2/getting-started/?nc1=h_ls" target="_blank">Getting Started with Amazon EC2</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial2.png" class="image" />
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://aws.amazon.com/getting-started/hands-on/get-a-domain/?nc1=h_ls" target="_blank">How to Register a Domain Name with Amazon Route 53</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial3.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://aws.amazon.com/ru/getting-started/hands-on/launch-a-wordpress-website/?trk=gs_card" target="_blank">
+                            Launch and Configure a WordPress Instance with Amazon Lightsail</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial4.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://aws.amazon.com/getting-started/hands-on/backup-files-to-amazon-s3/?nc1=h_ls" target="_blank">Store and Retrieve a File with Amazon S3</a></h2>    
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial5.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/?nc1=h_ls" target="_blank">Batch Upload Files to Amazon S3 Using the AWS CLI</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial6.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html" target="_blank">Creating a container image for use on Amazon ECS</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial7.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://aws.amazon.com/getting-started/hands-on/run-serverless-code/?nc1=h_ls" target="_blank">Run a Serverless "Hello, World!" with AWS Lambda</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial8.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html" target="_blank">Configuring a static website on Amazon S3</a></h2>
+                    </div>
+                </div>
+
+                <div class="portfolio__item">
+                    <div class="portfolio__img">
+                        <img src="media/img/tutorials/tutorial9.png" class="image"/>
+                        <div class="img-plus">
+                            <div class="plus"><i class="fa fa-check-circle"></i></div>
+                        </div>
+                    </div>
+                    <div class="portfolio__item__description">
+                        <h2 class="portfolio__item__header"><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/website-hosting-custom-domain-walkthrough.html" target="_blank">
+                            Configuring a static website using a custom domain registered with Route 53</a></h2>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</main>
+    <script type="text/javascript" src="index.js"></script>
+</body>
