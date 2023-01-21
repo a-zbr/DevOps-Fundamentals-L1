@@ -87,7 +87,7 @@ DONE
 ![aws_9.3.PNG](./img/aws_9.3.PNG)
 ***
 
-&emsp; 9.4 Create and save some file on Disk.
+&emsp; 9.3 Create and save some file on Disk.
 
 ![aws_9.4.PNG](./img/aws_9.4.PNG)
 ***
