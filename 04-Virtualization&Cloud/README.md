@@ -63,31 +63,31 @@ DONE
 ![aws_7.3.PNG](./img/aws_7.3.PNG)
 ***
 
-&emsp; 7.3 Connect to Your Instance.
+&emsp; 7.3 Connect to the Instance.
 
 ![aws_7.4.PNG](./img/aws_7.4.PNG)
 ***
 
-### 8. Create a snapshot of your instance to keep as a backup
+### 8. Create a snapshot of the instance to keep as a backup
 
 ![aws_8.PNG](./img/aws_8.PNG)
 ***
 
 ### 9. Create and attach a Disk_D (EBS) to your instance to add more storage space. Create and save some file on Disk_D
 
-&emsp; 9.1 Create and a Disk to my instance.
+&emsp; 9.1 Create a volume.
 
 ![aws_9.1.PNG](./img/aws_9.1.PNG)
 ***
 
-&emsp; 9.2 Attach a Disk to my instance.
+&emsp; 9.2 Attach a volume to my instance.
 
 ![aws_9.2.PNG](./img/aws_9.2.PNG)
 ***
-![aws_9.3.PNG](./img/aws_3.3.PNG)
+![aws_9.3.PNG](./img/aws_9.3.PNG)
 ***
 
-&emsp; 9.3 Create and save some file on Disk.
+&emsp; 9.4 Create and save some file on Disk.
 
 ![aws_9.4.PNG](./img/aws_9.4.PNG)
 ***
@@ -150,7 +150,7 @@ DONE
 
 &emsp; 15.1 Create an AWS IAM user.
 
-![aws_15.1.PNG](./img/aws_15.1.PNG)
+![aws_15.1.png](./img/aws_15.1.png)
 ***
 
 &emsp; 15.2 Configure access keys for this IAM user.
@@ -160,145 +160,145 @@ DONE
 
 &emsp; 15.3 Install and configure AWS CLI.
 
-![aws_15.3.PNG](./img/aws_15.3.PNG)
+![aws_15.3.png](./img/aws_15.3.png)
 ***
 
 &emsp; 15.4 Upload some files to S3.
 
-![aws_15.4.PNG](./img/aws_15.4.PNG)
+![aws_15.4.png](./img/aws_15.4.png)
 
 ### 16. Review the 10-minute example Deploy Docker Containers on Amazon Elastic Container Service (Amazon ECS). Repeat, create a cluster, and run the online demo application or better other application with custom settings
 
 &emsp; 16.1 Create the Dockerfile with Apache web server.
 
-![aws_16.1.PNG](./img/aws_16.1.PNG)
+![aws_16.1.png](./img/aws_16.1.png)
 ***
 
 &emsp; 16.2 Run the web server locally, using the Dockerfile from previous step.
 
-![aws_16.2.PNG](./img/aws_16.2.PNG)
+![aws_16.2.png](./img/aws_16.2.png)
 ***
 
 &emsp; 16.3 Create ECR repository.
 
-![aws_16.3.PNG](./img/aws_16.3.PNG)
+![aws_16.3.png](./img/aws_16.3.png)
 ***
 
 &emsp; 16.4 Tag the docker image and login to the ECR repository.
 
-![aws_16.4.PNG](./img/aws_16.4.PNG)
+![aws_16.4.png](./img/aws_16.4.png)
 ***
 
 &emsp; 16.5 Push the docker image to the ECR repository.
 
-![aws_16.5.PNG](./img/aws_16.5.PNG)
+![aws_16.5.png](./img/aws_16.5.png)
 ***
 
 &emsp; 16.6 A docker image is in an ECR repository.
 
-![aws_16.6.PNG](./img/aws_16.6.PNG)
+![aws_16.6.png](./img/aws_16.6.png)
 ***
 
 &emsp; 16.7 Create the ECS cluster.
 
-![aws_16.7.PNG](./img/aws_16.7.PNG)
+![aws_16.7.png](./img/aws_16.7.png)
 ***
 
 &emsp; 16.8 Create the Task Definition.
 
-![aws_16.8.PNG](./img/aws_16.8.PNG)
+![aws_16.8.png](./img/aws_16.8.png)
 ***
 
 &emsp; 16.9 Configure the Container Definition.
 
-![aws_16.9.PNG](./img/aws_16.9.PNG)
+![aws_16.9.png](./img/aws_16.9.png)
 ***
 
 &emsp; 16.10 Run the new task.
 
-![aws_16.10.PNG](./img/aws_16.10.PNG)
+![aws_16.10.png](./img/aws_16.10.png)
 ***
 
 &emsp; 16.11 Run the online demo application with custom settings.
 
-![aws_16.11.PNG](./img/aws_16.11.PNG)
+![aws_16.11.png](./img/aws_16.11.png)
 ***
 
 ### 17. Run a Serverless "Hello, World!" with AWS Lambda
 
 &emsp; 17.1 Select a Lambda blueprint.
 
-![aws_17.1.PNG](./img/aws_17.1.PNG)
+![aws_17.1.png](./img/aws_17.1.png)
 ***
 
 &emsp; 17.2 Configure and create the Lambda function.
 
-![aws_17.2.PNG](./img/aws_17.2.PNG)
+![aws_17.2.png](./img/aws_17.2.png)
 ***
 
 &emsp; 17.3 Configure Test Event.
 
-![aws_17.3.PNG](./img/aws_17.3.PNG)
+![aws_17.3.png](./img/aws_17.3.png)
 ***
 
 &emsp; 17.4 Invoke Lambda function and verify results.
 
-![aws_17.4.PNG](./img/aws_17.4.PNG)
+![aws_17.4.png](./img/aws_17.4.png)
 ***
 
 &emsp; 17.5 Monitor your metrics.
 
-![aws_17.5.PNG](./img/aws_17.5.PNG)
+![aws_17.5.png](./img/aws_17.5.png)
 ***
 
 ### 18. Create a static website on Amazon S3, publicly available (link1 or link2 - using a custom domain registered with Route 53). Post on the page your own photo, the name of the educational program (EPAM Cloud&DevOps Fundamentals Autumn 2022), the list of AWS services with which the student worked within the educational program or earlier and the full list with links of completed labs (based on tutorials or qwiklabs). Provide the link to the website in your report and СV
 
 &emsp; 18.1 Create hosted zone.
 
-![aws_18.1.PNG](./img/aws_18.1.PNG)
+![aws_18.1.png](./img/aws_18.1.png)
 ***
 
 &emsp; 18.2 Create domain on the nic.ua.
 
-![aws_18.2.PNG](./img/aws_18.2.PNG)
+![aws_18.2.png](./img/aws_18.2.png)
 ***
 
 &emsp; 18.3 Input correct AWS NS for this domain.
 
-![aws_18.3.PNG](./img/aws_18.3.PNG)
+![aws_18.3.png](./img/aws_18.3.png)
 ***
 
 &emsp; 18.4 Create two S3 buckets.
 
-![aws_18.4.PNG](./img/aws_18.4.PNG)
+![aws_18.4.png](./img/aws_18.4.png)
 ***
 
 &emsp; 18.5 Upload website page with CV to the S3 bucket.
 
-![aws_18.5.PNG](./img/aws_18.5.PNG)
+![aws_18.5.png](./img/aws_18.5.png)
 ***
 
 &emsp; 18.6 Configure the static website hosting option for the public bucket.
 
-![aws_18.6.PNG](./img/aws_18.6.PNG)
+![aws_18.6.png](./img/aws_18.6.png)
 ***
 
 &emsp; 18.7 Add bucket policy.
 
-![aws_18.7.PNG](./img/aws_18.7.PNG)
+![aws_18.7.png](./img/aws_18.7.png)
 ***
 
 &emsp; 18.8 Configure redirect requests from a private bucket to a public bucket.
 
-![aws_18.8.PNG](./img/aws_18.8.PNG)
+![aws_18.8.png](./img/aws_18.8.png)
 ***
 
 &emsp; 18.9 Create A records for buckets in the hosted zone.
 
-![aws_18.9.PNG](./img/aws_18.9.PNG)
+![aws_18.9.png](./img/aws_18.9.png)
 ***
 
 &emsp; 18.10 Create a static website on Amazon S3. It is available at [this link](http://zbr-it.pp.ua/).
 
-![aws_18.10.PNG](./img/aws_18.10.PNG)
+![aws_18.10.png](./img/aws_18.10.png)
 ***
