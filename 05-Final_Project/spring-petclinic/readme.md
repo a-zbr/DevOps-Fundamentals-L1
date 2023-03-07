@@ -1,157 +1,170 @@
-# Spring PetClinic Sample Application [![Build Status](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml)
+# Spring Boot Shopping Cart Web App
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spring-projects/spring-petclinic)
+## About
 
-## Understanding the Spring Petclinic application with a few diagrams
-<a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
+This is a demo project for practicing Spring + Thymeleaf. The idea was to build some basic shopping cart web app.
 
-## Running petclinic locally
-Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/) or [Gradle](https://spring.io/guides/gs/gradle/). You can build a jar file and run it from the command line (it should work just as well with Java 17 or newer):
+It was made using **Spring Boot**, **Spring Security**, **Thymeleaf**, **Spring Data JPA**, **Spring Data REST and Docker**. 
+Database is in memory **H2**.
 
+There is a login and registration functionality included.
 
+Users can shop for products. Each user has his own shopping cart (session functionality).
+Checkout is transactional.
+
+## Configuration
+
+### Configuration Files
+
+Folder **src/resources/** contains config files for **shopping-cart** Spring Boot application.
+
+* **src/resources/application.properties** - main configuration file. Here it is possible to change admin username/password,
+as well as change the port number.
+
+## How to run
+
+There are several ways to run the application. You can run it from the command line with included Maven Wrapper, Maven or Docker. 
+
+Once the app starts, go to the web browser and visit `http://localhost:80/home`
+
+Admin username: **admin**
+
+Admin password: **admin**
+
+User username: **user**
+
+User password: **password**
+
+### Maven Wrapper
+
+#### Using the Maven Plugin
+
+Go to the root folder of the application and type:
+
+```bash
+$ chmod +x scripts/mvnw
+$ scripts/mvnw spring-boot:run
 ```
-git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic
-./mvnw package
-java -jar target/*.jar
+
+#### Using Executable Jar
+
+Or you can build the JAR file with
+
+```bash
+$ scripts/mvnw clean package
 ```
 
-You can then access petclinic at http://localhost:8080/
+Then you can run the JAR file:
 
-<img width="1042" alt="petclinic-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
-
-Or you can run it from Maven directly using the Spring Boot Maven plugin. If you do this, it will pick up changes that you make in the project immediately (changes to Java source files require a compile as well - most people use an IDE for this):
-
-```
-./mvnw spring-boot:run
+```bash
+$ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
 ```
 
-> NOTE: Windows users should set `git config core.autocrlf true` to avoid format assertions failing the build (use `--global` to set that flag globally).
+### Maven
 
-> NOTE: If you prefer to use Gradle, you can build the app using `./gradlew build` and look for the jar file in `build/libs`.
+Open a terminal and run the following commands to ensure that you have valid versions of Java and Maven installed:
 
-## Building a Container
-
-There is no `Dockerfile` in this project. You can build a container image (if you have a docker daemon) using the Spring Boot build plugin:
-
+```bash
+$ java -version
+java version "1.8.0_102"
+Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
 ```
-./mvnw spring-boot:build-image
+
+```bash
+$ mvn -v
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T16:41:47+00:00)
+Maven home: /usr/local/Cellar/maven/3.3.9/libexec
+Java version: 1.8.0_102, vendor: Oracle Corporation
 ```
 
-## In case you find a bug/suggested improvement for Spring Petclinic
-Our issue tracker is available [here](https://github.com/spring-projects/spring-petclinic/issues)
+#### Using the Maven Plugin
 
-
-## Database configuration
-
-In its default configuration, Petclinic uses an in-memory database (H2) which
-gets populated at startup with data. The h2 console is exposed at `http://localhost:8080/h2-console`,
-and it is possible to inspect the content of the database using the `jdbc:h2:mem:testdb` url.
+The Spring Boot Maven plugin includes a run goal that can be used to quickly compile and run your application. 
+Applications run in an exploded form, as they do in your IDE. 
+The following example shows a typical Maven command to run a Spring Boot application:
  
-A similar setup is provided for MySQL and PostgreSQL if a persistent database configuration is needed. Note that whenever the database type changes, the app needs to run with a different profile: `spring.profiles.active=mysql` for MySQL or `spring.profiles.active=postgres` for PostgreSQL.
+```bash
+$ mvn spring-boot:run
+``` 
 
-You can start MySQL or PostgreSQL locally with whatever installer works for your OS or use docker:
+#### Using Executable Jar
 
+To create an executable jar run:
+
+```bash
+$ mvn clean package
+``` 
+
+To run that application, use the java -jar command, as follows:
+
+```bash
+$ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
 ```
-docker run -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic -p 3306:3306 mysql:5.7.8
+
+To exit the application, press **ctrl-c**.
+
+### Docker
+
+It is possible to run **shopping-cart** using Docker:
+
+Build Docker image:
+```bash
+$ mvn clean package
+$ docker build -t shopping-cart:dev -f docker/Dockerfile .
 ```
 
-or
-
+Run Docker container:
+```bash
+$ docker run --rm -i -p 80:80 \
+      --name shopping-cart \
+      shopping-cart:dev
 ```
-docker run -e POSTGRES_USER=petclinic -e POSTGRES_PASSWORD=petclinic -e POSTGRES_DB=petclinic -p 5432:5432 postgres:14.1
+
+##### Helper script
+
+It is possible to run all of the above with helper script:
+
+```bash
+$ chmod +x scripts/run_docker.sh
+$ scripts/run_docker.sh
 ```
 
-Further documentation is provided for [MySQL](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources/db/mysql/petclinic_db_setup_mysql.txt)
-and for [PostgreSQL](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources/db/postgres/petclinic_db_setup_postgres.txt).
+## Docker 
 
-## Compiling the CSS
+Folder **docker** contains:
 
-There is a `petclinic.css` in `src/main/resources/static/resources/css`. It was generated from the `petclinic.scss` source, combined with the [Bootstrap](https://getbootstrap.com/) library. If you make changes to the `scss`, or upgrade Bootstrap, you will need to re-compile the CSS resources using the Maven profile "css", i.e. `./mvnw package -P css`. There is no build profile for Gradle to compile the CSS.
+* **docker/shopping-cart/Dockerfile** - Docker build file for executing shopping-cart Docker image. 
+Instructions to build artifacts, copy build artifacts to docker image and then run app on proper port with proper configuration file.
 
-## Working with Petclinic in your IDE
+## Util Scripts
 
-### Prerequisites
-The following items should be installed in your system:
-* Java 17 or newer (full JDK, not a JRE).
-* [git command line tool](https://help.github.com/articles/set-up-git)
-* Your preferred IDE 
-  * Eclipse with the m2e plugin. Note: when m2e is available, there is an m2 icon in `Help -> About` dialog. If m2e is
-  not there, follow the install process [here](https://www.eclipse.org/m2e/)
-  * [Spring Tools Suite](https://spring.io/tools) (STS)
-  * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  * [VS Code](https://code.visualstudio.com)
+* **scripts/run_docker.sh.sh** - util script for running shopping-cart Docker container using **docker/Dockerfile**
 
-### Steps:
+## Tests
 
-1) On the command line run:
-    ```
-    git clone https://github.com/spring-projects/spring-petclinic.git
-    ```
-2) Inside Eclipse or STS:
-    ```
-    File -> Import -> Maven -> Existing Maven project
-    ```
+Tests can be run by executing following command from the root of the project:
 
-    Then either build on the command line `./mvnw generate-resources` or use the Eclipse launcher (right click on project and `Run As -> Maven install`) to generate the css. Run the application main method by right-clicking on it and choosing `Run As -> Java Application`.
+```bash
+$ mvn test
+```
 
-3) Inside IntelliJ IDEA
-    In the main menu, choose `File -> Open` and select the Petclinic [pom.xml](pom.xml). Click on the `Open` button.
+## Helper Tools
 
-    CSS files are generated from the Maven build. You can build them on the command line `./mvnw generate-resources` or right-click on the `spring-petclinic` project then `Maven -> Generates sources and Update Folders`.
+### HAL REST Browser
 
-    A run configuration named `PetClinicApplication` should have been created for you if you're using a recent Ultimate version. Otherwise, run the application by right-clicking on the `PetClinicApplication` main class and choosing `Run 'PetClinicApplication'`.
+Go to the web browser and visit `http://localhost:80/`
 
-4) Navigate to Petclinic
+You will need to be authenticated to be able to see this page.
 
-    Visit [http://localhost:8080](http://localhost:8080) in your browser.
+### H2 Database web interface
 
+Go to the web browser and visit `http://localhost:80/h2-console`
 
-## Looking for something in particular?
+In field **JDBC URL** put 
+```
+jdbc:h2:mem:shopping_cart_db
+```
 
-|Spring Boot Configuration | Class or Java property files  |
-|--------------------------|---|
-|The Main Class | [PetClinicApplication](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java) |
-|Properties Files | [application.properties](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/resources) |
-|Caching | [CacheConfiguration](https://github.com/spring-projects/spring-petclinic/blob/main/src/main/java/org/springframework/samples/petclinic/system/CacheConfiguration.java) |
-
-## Interesting Spring Petclinic branches and forks
-
-The Spring Petclinic "main" branch in the [spring-projects](https://github.com/spring-projects/spring-petclinic)
-GitHub org is the "canonical" implementation based on Spring Boot and Thymeleaf. There are
-[quite a few forks](https://spring-petclinic.github.io/docs/forks.html) in the GitHub org
-[spring-petclinic](https://github.com/spring-petclinic). If you are interested in using a different technology stack to implement the Pet Clinic, please join the community there.
-
-
-## Interaction with other open source projects
-
-One of the best parts about working on the Spring Petclinic application is that we have the opportunity to work in direct contact with many Open Source projects. We found bugs/suggested improvements on various topics such as Spring, Spring Data, Bean Validation and even Eclipse! In many cases, they've been fixed/implemented in just a few days.
-Here is a list of them:
-
-| Name | Issue |
-|------|-------|
-| Spring JDBC: simplify usage of NamedParameterJdbcTemplate | [SPR-10256](https://jira.springsource.org/browse/SPR-10256) and [SPR-10257](https://jira.springsource.org/browse/SPR-10257) |
-| Bean Validation / Hibernate Validator: simplify Maven dependencies and backward compatibility |[HV-790](https://hibernate.atlassian.net/browse/HV-790) and [HV-792](https://hibernate.atlassian.net/browse/HV-792) |
-| Spring Data: provide more flexibility when working with JPQL queries | [DATAJPA-292](https://jira.springsource.org/browse/DATAJPA-292) |
-
-
-# Contributing
-
-The [issue tracker](https://github.com/spring-projects/spring-petclinic/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
-
-For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org>. If you have not previously done so, please fill out and submit the [Contributor License Agreement](https://cla.pivotal.io/sign/spring).
-
-# License
-
-The Spring PetClinic sample application is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
-
-[spring-petclinic]: https://github.com/spring-projects/spring-petclinic
-[spring-framework-petclinic]: https://github.com/spring-petclinic/spring-framework-petclinic
-[spring-petclinic-angularjs]: https://github.com/spring-petclinic/spring-petclinic-angularjs 
-[javaconfig branch]: https://github.com/spring-petclinic/spring-framework-petclinic/tree/javaconfig
-[spring-petclinic-angular]: https://github.com/spring-petclinic/spring-petclinic-angular
-[spring-petclinic-microservices]: https://github.com/spring-petclinic/spring-petclinic-microservices
-[spring-petclinic-reactjs]: https://github.com/spring-petclinic/spring-petclinic-reactjs
-[spring-petclinic-graphql]: https://github.com/spring-petclinic/spring-petclinic-graphql
-[spring-petclinic-kotlin]: https://github.com/spring-petclinic/spring-petclinic-kotlin
-[spring-petclinic-rest]: https://github.com/spring-petclinic/spring-petclinic-rest
+In `/src/main/resources/application.properties` file it is possible to change both
+web interface url path, as well as the datasource url.

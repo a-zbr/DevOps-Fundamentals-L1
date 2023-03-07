@@ -9,6 +9,9 @@ sudo chkconfig httpd on
 # install openjdk11
 sudo amazon-linux-extras install java-openjdk11 -y
 
+# install git
+sudo yum install git -y
+
 # create jenkins user with correct permissions
 sudo useradd -m -s /bin/bash jenkins
 sudo usermod -aG wheel jenkins

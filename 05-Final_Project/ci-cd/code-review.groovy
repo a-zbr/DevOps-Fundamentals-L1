@@ -1,7 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 
 pipeline {
-    agent { label 'ubuntu' }
+    agent { label 'amazon' }
 
     parameters {
         string(name: 'Branch',
@@ -10,7 +10,7 @@ pipeline {
         string(
             name: 'Git_repository_URL',
             description: 'Public/Private full URL for repository',
-            defaultValue: 'git@github.com:k-zbar/shopping-cart.git', trim: true)
+            defaultValue: 'git@github.com:a-zbr/DevOps-Fundamentals-L1.git', trim: true)
     }
 
     options {
@@ -18,7 +18,7 @@ pipeline {
     }
 
     tools {
-        maven '3.8.6'
+        maven '3.9.0'
     }
 
     stages {
@@ -33,7 +33,8 @@ pipeline {
             steps{
                 sh '''
                     echo 'Delete all containers'
-                    docker rm -f $(docker ps -a -q) &> /dev/null
+                    docker ps -a -q | xargs --no-run-if-empty docker rm -f
+                    #docker rm -f $(docker ps -a -q) &> /dev/null
                 '''
             }
         }
@@ -43,35 +44,37 @@ pipeline {
                 checkout([$class                           : 'GitSCM', branches: [[name: params.Branch]],
                     doGenerateSubmoduleConfigurations: false, extensions: [],
                     submoduleCfg                     : [],
-                    userRemoteConfigs                : [[credentialsId: "github-kzbar-shopping-cart-cred",
+                    userRemoteConfigs                : [[credentialsId: "github-final-project-key",
                                                         url          : params.Git_repository_URL]]])
             }
         }
 
-        stage('Compile') { 
+        stage('Compile') {
             steps {
-                sh 'mvn compile'
+                dir('05-Final_Project/spring-petclinic') {
+                    sh 'mvn compile'
+                } 
             }
         }
 
-        stage('Tests') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+        // stage('Tests') {
+        //     steps {
+        //         sh 'mvn test'
+        //     }
+        // }
 
-        stage('Dockerfile lint') {
-            steps {
-                sh 'hadolint docker/Dockerfile'
-            }
-        }
+        // stage('Dockerfile lint') {
+        //     steps {
+        //         sh 'hadolint docker/Dockerfile'
+        //     }
+        // }
 
-        stage ('Starting Build job') {
-            steps {
-                echo "Triggering Build job for this application"
-                build job: 'Build-shopping-cart-app', parameters: [string(name: 'Branch', value: params.Branch),
-                                                                   string(name: 'Git_repository_URL', value: params.Git_repository_URL)], wait: false
-            }
-        }
+        // stage ('Starting Build job') {
+        //     steps {
+        //         echo "Triggering Build job for this application"
+        //         build job: 'Build-shopping-cart-app', parameters: [string(name: 'Branch', value: params.Branch),
+        //                                                            string(name: 'Git_repository_URL', value: params.Git_repository_URL)], wait: false
+        //     }
+        // }
     }
 }
