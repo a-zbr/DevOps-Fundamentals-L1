@@ -51,23 +51,27 @@ pipeline {
 
         stage('Compile') {
             steps {
-                dir('05-Final_Project/spring-petclinic') {
+                dir('05-Final_Project/spring-application') {
                     sh 'mvn compile'
-                } 
+                }
             }
         }
 
-        // stage('Tests') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        // }
+        stage('Tests') {
+            steps {
+                dir('05-Final_Project/spring-application') {
+                    sh 'mvn test'
+                }
+            }
+        }
 
-        // stage('Dockerfile lint') {
-        //     steps {
-        //         sh 'hadolint docker/Dockerfile'
-        //     }
-        // }
+        stage('Dockerfile lint') {
+            steps {
+                dir('05-Final_Project/spring-application') {
+                    sh 'hadolint docker/Dockerfile'
+                }
+            }
+        }
 
         // stage ('Starting Build job') {
         //     steps {
