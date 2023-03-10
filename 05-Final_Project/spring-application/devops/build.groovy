@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'amazon' }
+    agent { label 'ubuntu' }
 
     parameters {
         string(name: 'Branch',
@@ -8,7 +8,7 @@ pipeline {
         string(
             name: 'Git_repository_URL',
             description: 'Public/Private full URL for repository',
-            defaultValue: 'git@github.com:a-zbr/DevOps-Fundamentals-L1.git', trim: true)
+            defaultValue: 'git@github.com:k-zbar/shopping-cart.git', trim: true)
     }
 
     options {
@@ -16,7 +16,7 @@ pipeline {
     }
 
     tools {
-        maven '3.9.0'
+        maven '3.8.6'
     }
 
     stages {
@@ -31,8 +31,7 @@ pipeline {
             steps{
                 sh '''
                     echo 'Delete all containers'
-                    docker ps -a -q | xargs --no-run-if-empty docker rm -f
-                    #docker rm -f $(docker ps -a -q) &> /dev/null
+                    docker rm -f $(docker ps -a -q) &> /dev/null
                 '''
             }
         }
@@ -42,61 +41,53 @@ pipeline {
                 checkout([$class                           : 'GitSCM', branches: [[name: params.Branch]],
                     doGenerateSubmoduleConfigurations: false, extensions: [],
                     submoduleCfg                     : [],
-                    userRemoteConfigs                : [[credentialsId: "github-final-project-key",
+                    userRemoteConfigs                : [[credentialsId: "github-kzbar-shopping-cart-cred",
                                                         url          : params.Git_repository_URL]]])
             }
         }
 
-        stage('Compile') {
+        stage('Compile') { 
             steps {
-                dir('05-Final_Project/spring-application') {
-                    sh 'mvn compile'
-                }
+                sh 'mvn compile'
             }
         }
 
         stage('Tests') {
             steps {
-                dir('05-Final_Project/spring-application') {
-                    sh 'mvn test'
-                }
+                sh 'mvn test'
             }
         }
 
         stage('Build') {
             steps {
-                dir('05-Final_Project/spring-application') {
-                    sh 'mvn clean package -DskipTests=true'
-                }
+                sh 'mvn clean package -DskipTests=true'
             }
         }
 
         stage('Build docker image') {
             steps {
-                dir('05-Final_Project/spring-application') {
-                    sh 'docker build -t azbr/final-project:dev -f docker/Dockerfile .'
-                }
+                sh 'docker build -t kzbar/shopping-cart:dev -f docker/Dockerfile .'
             }
         }
 
         stage('Push docker image') {
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub-azbr', url: 'https://index.docker.io/v1/') {
-                    sh 'docker push azbr/final-project:dev'
+                withDockerRegistry(credentialsId: 'dockerhub-cred-kzbar', url: 'https://index.docker.io/v1/') {
+                    sh 'docker push kzbar/shopping-cart:dev'
                 }
             }
         }
 
         stage('Delete docker image locally') {
             steps {
-                sh 'docker rmi azbr/final-project:dev'
+                sh 'docker rmi kzbar/shopping-cart:dev'
             }
         }
 
         stage ('Starting Deploy job') {
             steps {
                 echo "Triggering Deploy job for this application"
-                build job: 'Deploy-app', wait: false
+                build job: 'Deploy-shopping-cart-app', wait: false
             }
         }
     }
