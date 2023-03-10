@@ -73,12 +73,12 @@ pipeline {
             }
         }
 
-        // stage ('Starting Build job') {
-        //     steps {
-        //         echo "Triggering Build job for this application"
-        //         build job: 'Build-shopping-cart-app', parameters: [string(name: 'Branch', value: params.Branch),
-        //                                                            string(name: 'Git_repository_URL', value: params.Git_repository_URL)], wait: false
-        //     }
-        // }
+        stage ('Starting Build job') {
+            steps {
+                echo "Triggering Build job for this application"
+                build job: 'Build-app', parameters: [string(name: 'Branch', value: params.Branch),
+                                                                   string(name: 'Git_repository_URL', value: params.Git_repository_URL)], wait: false
+            }
+        }
     }
 }

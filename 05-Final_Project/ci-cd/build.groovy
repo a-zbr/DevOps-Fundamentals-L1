@@ -93,11 +93,11 @@ pipeline {
             }
         }
 
-        // stage ('Starting Deploy job') {
-        //     steps {
-        //         echo "Triggering Deploy job for this application"
-        //         build job: 'Deploy-shopping-cart-app', wait: false
-        //     }
-        // }
+        stage ('Starting Deploy job') {
+            steps {
+                echo "Triggering Deploy job for this application"
+                build job: 'Deploy-app', wait: false
+            }
+        }
     }
 }
